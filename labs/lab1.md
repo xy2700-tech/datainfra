@@ -16,17 +16,17 @@
 
 In class we named five stages every data system has. Trace them for the two tables you loaded at home. Some rows ask what you did this week; the last two ask you to look ahead to the system you'll build by December. Educated guesses are fine; say where you're unsure.
 
-**My tables:** (main table) + (second table)
+**My tables:** (inputs) + (provisions)
 
 | Stage | For your data | Your answer |
 |---|---|---|
-| **1. Ingestion** | Where did each file come from, and how did you get it (portal download, export, API)? If the source changed its format tomorrow, what would break? | |
-| **2. Validation** | What did `DESCRIBE`, `SUMMARIZE` and the key check reveal? Name one check you'd want to run *every time* new data arrives. | |
-| **3. Transformation** | What did you change to make the data usable (e.g. the missing-value fix)? What would you still need to clean, join or calculate to answer your question? | |
-| **4. Scheduling** | How often does the source publish updates (check its website)? If your app used this data, how often would it need to refresh to stay useful, and why? | |
-| **5. Interface** | Who would want answers from this data? Write the plain-English question they'd ask, and what a good answer would show them. | |
+| **1. Ingestion** | Where did each file come from, and how did you get it (portal download, export, API)? If the source changed its format tomorrow, what would break? | I downloaded both tables from github, where they existed as csv files |
+| **2. Validation** | What did `DESCRIBE`, `SUMMARIZE` and the key check reveal? Name one check you'd want to run *every time* new data arrives. | I would run DESCRIBE everytime to see what is the type of data each column contains, a common error is columns that are supposed to contain numerical data returning as varchar due to rows that contain NULL|
+| **3. Transformation** | What did you change to make the data usable (e.g. the missing-value fix)? What would you still need to clean, join or calculate to answer your question? | I changed the NULL values under share_provided into 0|
+| **4. Scheduling** | How often does the source publish updates (check its website)? If your app used this data, how often would it need to refresh to stay useful, and why? | The source updates roughly every year and they are compiled manually by analysts |
+| **5. Interface** | Who would want answers from this data? Write the plain-English question they'd ask, and what a good answer would show them. | Anyone who cares about the semiconductor supply chain will want to consult this data set. They might ask what company dominates the market for any process in chip design and manufacturing, a good answer will return the provider's name and market share for each process|
 
-**Which stage feels most fragile for your data, and why?** (two or three sentences)
+**Which stage feels most fragile for your data, and why?** It feels fragile during the transformation stage because there are a lot of missing data due to companies not disclosing information on their market share. The column of market share takes numbers and treating absent data of zero will enable analysis but falsely represent the how much actual market share on any step of chip design a company holds.Also the provider list has both countries and companies under the same column.
 
 ---
 
